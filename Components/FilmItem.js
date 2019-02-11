@@ -3,9 +3,22 @@ import React from 'react'
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { getImageFromApi } from '../API/TMDBApi';
 
-
+//À noter qu'ici, j'ai connecté mon store Redux au component Search. 
 // Presentation des films en Carte
 class FilmItem extends React.Component {
+
+  // visibilité Coeur Favorite
+  _displayFavoriteImage() {
+    if (this.props.isFilmFavorite) {
+      // Si la props isFilmFavorite vaut true, on affiche le 🖤
+      return (
+        <Image
+          style={styles.favorite_image}
+          source={require('../assets/images/ic_favorite.png')}
+        />
+      )
+    }
+  }
   
   render() {
 
@@ -24,6 +37,7 @@ class FilmItem extends React.Component {
         />
         <View style={ styles.content_container}>
             <View style={styles.header_container}>
+            {this._displayFavoriteImage()}
                 <Text style={styles.title_text}>{film.title}</Text>
                 <Text style={styles.vote_text}>{film.vote_average}</Text>
             </View>
@@ -86,6 +100,11 @@ const styles = StyleSheet.create({
     date_text: {
       textAlign: 'right',
       fontSize: 14
+    },
+    favorite_image: {
+      width: 25,
+      height: 25,
+      marginRight: 5
     }
   })
 
