@@ -10,15 +10,18 @@ class Search extends React.Component {
 
   constructor(props) {
     super(props)
+
     this.searchedText = ""
     this.page = 0
     this.totalPages = 0
+
     this.state = {
       films: [],
       isLoading: false
     }
   }
 
+// chragement des films selon la recherche et presentation par page Infinite Scroll
   _loadFilms() {
     if (this.searchedText.length > 0) {
       this.setState({ isLoading: true });
@@ -34,11 +37,11 @@ class Search extends React.Component {
     }
   
   }
-
+// texte pour film recherché
   _searchTextInputChanged(text) {
     this.searchedText = text 
   }
-
+// Recherche Film
   _searchFilms() {
     this.page = 0
     this.totalPages = 0
@@ -55,6 +58,7 @@ class Search extends React.Component {
     this.props.navigation.navigate("FilmDetail",{ idFilm: idFilm})
   }
 
+// Chargeur attente
   _displayLoading() {
     if (this.state.isLoading) {
       return (
@@ -65,6 +69,7 @@ class Search extends React.Component {
     }
   }
 
+// Rendu View
   render() {
     return (
       <View style={styles.main_container}>
@@ -75,6 +80,7 @@ class Search extends React.Component {
           onSubmitEditing={() => this._searchFilms()}
         />
         <Button title='Rechercher' onPress={() => this._searchFilms()}/>
+        
         <FlatList
           data={this.state.films}
           keyExtractor={(item) => item.id.toString()}
@@ -93,6 +99,8 @@ class Search extends React.Component {
   }
 }
 
+
+// STYLES 
 const styles = StyleSheet.create({
   main_container: {
     flex: 1,

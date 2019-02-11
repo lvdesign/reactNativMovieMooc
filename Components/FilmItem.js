@@ -4,19 +4,19 @@ import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { getImageFromApi } from '../API/TMDBApi';
 
 
-
-
+// Presentation des films en Carte
 class FilmItem extends React.Component {
+  
   render() {
 
     // const film = this.props.film;
     // const displayDetailForFilm = this.props.displayDetailForFilm;
 
-    const { film, displayDetailForFilm }= this.props;
+    const { film, displayDetailForFilm } = this.props;
 
     return (       
     <TouchableOpacity 
-    onPress={ () => displayDetailForFilm(film.id)}
+    onPress={ () => displayDetailForFilm(film.id)} // vers le detail
     style={styles.main_container}>
         <Image 
             style={ styles.image}
@@ -31,7 +31,7 @@ class FilmItem extends React.Component {
                 <Text style={styles.description_text} numberOfLines={6}>{film.overview}</Text>
             </View>
             <View style={styles.date_container}>
-                <Text style={styles.date_txt} >Sortie le{film.release_date}</Text>
+                <Text style={styles.date_txt} >Sortie le {film.release_date}</Text>
             </View>            
         </View>        
     </TouchableOpacity >
@@ -40,6 +40,8 @@ class FilmItem extends React.Component {
   }
 }
 
+
+// STYLES
 const styles = StyleSheet.create({
     main_container: {
       height: 190,
