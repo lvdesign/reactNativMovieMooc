@@ -22,8 +22,7 @@ class Favorites extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-    
+const styles = StyleSheet.create({    
     container_box: {
         flex: 1
       }

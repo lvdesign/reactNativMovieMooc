@@ -1,12 +1,10 @@
 // Components/FilmList.js
-
 import React from 'react'
 import { StyleSheet, FlatList } from 'react-native'
 import FilmItem from './FilmItem'
 import { connect } from 'react-redux'
 
 class FilmList extends React.Component {
-
   constructor(props) {
     super(props)
     this.state = {
@@ -14,6 +12,7 @@ class FilmList extends React.Component {
     }
   }
 
+  // liaison nav pour detail -> film detail
   _displayDetailForFilm = (idFilm) => {
     console.log("Display film " + idFilm)
     this.props.navigation.navigate('FilmDetail', {idFilm: idFilm})
